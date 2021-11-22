@@ -1,0 +1,52 @@
+package A;
+
+import java.util.Scanner;
+
+public class demo05 {
+    /**
+     *
+     * @param name
+     * @param money
+     * @param time
+     */
+
+
+    public static void workCost(String name, double money,int time){
+
+        if (time<=0){
+            System.out.println(name+"没有迟到");
+        }else if (0<time&&time<=10){
+            System.out.println(name+"迟到"+time+"分钟，警告！");
+        }else if (10<time&&time<=20){
+            System.out.println(name+"迟到"+time+"分钟，罚款100元。");
+        }else if (20<time&&time<=30){
+            System.out.println(name+"迟到"+time+"分钟，罚款200元。");
+        }else if (30<time&&time<=60){
+            System.out.println(name+"迟到"+time+"分钟扣除半日工资："+String.format("%1$.2f",money/21/2)+"元");
+        }else {
+            System.out.println(name+"迟到1个小时以上，按旷工计算扣除三日工资："+String.format("%1$.2f",(money/21*3))+"元");
+        }
+
+    }
+    public static void main(String[] args) {
+        System.out.println("迟到处罚意见，输入“exit”退出");
+        while (true){
+
+        System.out.println("请输入员工名称：");
+        Scanner sc=new Scanner(System.in);
+        String name =sc.next();
+            if ("exit".equals(name)){
+                break;
+            }
+        System.out.println("请输入月薪：");
+        double money =sc.nextDouble();
+        System.out.println("输入迟到多少分钟：");
+        int time=sc.nextInt();
+        workCost(name,money,time);
+
+
+        }
+
+
+    }
+}
